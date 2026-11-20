@@ -1,0 +1,86 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* overflow-x: hidden; */
+/* } */ 
+.galareya {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Katta rasm bilan pastki ramka orasi */
+    margin-top: 20px;
+}
+
+/* Tepadagi katta rasm */
+.katta-rasm img {
+    width: 800px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+}
+
+/* Pastdagi 800px x 50px o'lchamdagi skroll ramka */
+.kichik-rasmlar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    width: 1000px;           /* Siz aytgan ramka eni */
+    height: 200px;           /* Siz aytgan ramka bo'yi */
+    overflow-x: auto;       /* O'ng-chapga skroll */
+    /* overflow-y: hidden; */
+    border: 1px solid #ffffff; /* Ramka chizig'i (xohlasangiz olib tashlashingiz mumkin) */
+    border-radius: 6px;
+    padding: 2px;
+    box-sizing: border-box;
+     scroll-behavior: auto;
+}
+
+/* Ramka ichidagi rasmlar qisilib qolmasligi uchun */
+.kichik-rasmlar img {
+    width: 150px;            /* Har bir rasm eni (20 tasi 800px ga sig'may, skroll bo'lib aylanadi) */
+    height: 100%;           /* Ramka bo'yiga (50px) to'liq moslashadi */
+    object-fit: cover;
+    cursor: pointer;
+    border-radius: 4px;
+    flex-shrink: 0;         /* Rasmlar siqilib ketishini to'liq bloklaydi */
+    transition: opacity 1s;
+    /* transform: translateZ(0); */
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    will-change: transform;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+}
+
+.kichik-rasmlar img:hover {
+    opacity: 1;
+    animation: jonlanish 0.5s ease-in-out;
+    transform: scale(1.08); /* Biroz kattalashib turadi */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Orqasiga soya tushadi */
+    z-index: 2; 
+}
+@keyframes jonlanish {
+    0% {
+        transform: scale(1) rotate(0deg);
+    }
+    25% {
+        transform: scale(1.08) rotate(-3deg); /* Chapga biroz egiladi */
+    }
+    50% {
+        transform: scale(1.08) rotate(3deg);  /* O'ngga biroz egiladi */
+    }
+    75% {
+        transform: scale(1.08) rotate(-2deg); /* Yana chapga */
+    }
+    100% {
+        transform: scale(1.08) rotate(0deg);  /* To'g'rilanib kattalashgan holda qoladi */
+    }
+}
